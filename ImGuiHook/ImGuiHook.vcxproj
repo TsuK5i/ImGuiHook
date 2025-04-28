@@ -32,7 +32,7 @@
     <ClCompile Include="Inludes\minhook\src\hook.c" />
     <ClCompile Include="Inludes\minhook\src\trampoline.c" />
     <ClCompile Include="src\dllmain.cpp" />
-    <ClCompile Include="src\ImGuiHook\ImGuiHook.cpp" />
+    <ClCompile Include="Inludes\ImGuiHook\ImGuiHook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inludes\imgui\imgui.h" />
@@ -52,7 +52,7 @@
     <ClInclude Include="Inludes\minhook\src\hde\table32.h" />
     <ClInclude Include="Inludes\minhook\src\hde\table64.h" />
     <ClInclude Include="Inludes\minhook\src\trampoline.h" />
-    <ClInclude Include="src\ImGuiHook\ImGuiHook.hpp" />
+    <ClInclude Include="Inludes\ImGuiHook\ImGuiHook.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Inludes\minhook\dll_resources\MinHook.def" />

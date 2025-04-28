@@ -9,13 +9,13 @@
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);                // Use ImGui::GetCurrentContext()
 #define _CAST(t,v)	reinterpret_cast<t>(v)
-
-void ImGuiHook::Render() {
-	//在这个函数内编写您的代码
-	auto DrawList = ImGui::GetBackgroundDrawList();
-	DrawList->AddRectFilled(ImVec2(0, 0), ImVec2(100, 100), ImColor(255,255,255));
-	//如果一切都没有问题的话，您使用这段代码应该会看见左上角有一个白色的方块
-}
+//
+//void ImGuiHook::Render() {
+//	auto DrawList = ImGui::GetBackgroundDrawList();
+//	ImGui::Begin("Default Menu");
+//	ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
+//	ImGui::End();
+//}
 
 LRESULT CALLBACK ImGuiHook::h_WndProc(const HWND hWnd,UINT uMsg,WPARAM wParam,LPARAM lParam)
 {
@@ -73,13 +73,8 @@ bool __stdcall ImGuiHook::wglSwapBuffers(IN  HDC hDc)
 	return OriginalwglSwapBuffers(hDc);
 }
 
-void ImGuiHook::InitHook() {
-	//FreeConsole();
-	//AllocConsole();
-	//FILE* f;
-	//freopen_s(&f, "CONOUT$", "w", stderr);
-	//freopen_s(&f, "CONOUT$", "w", stdout);
-	//freopen_s(&f, "CONIN$", "r", stdin);
+void ImGuiHook::InitHook(std::function<void()> render) {
+	Render = render;
 	MH_Initialize();
 	if (kiero::init(kiero::RenderType::OpenGL) == kiero::Status::Success) {
 		auto hMod = GetModuleHandleA("OPENGL32.dll");
